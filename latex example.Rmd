@@ -1,0 +1,106 @@
+---
+title: "latex example"
+author: "Taekyung Lim"
+date: "Sunday, March 22, 2015"
+output: html_document
+---
+
+# Exploratory Data Analysis & 
+# Statistical Consulting Homework
+
+=====================================================================
+
+ The aim of the final project, continuing the first homework, is to make an R function which <br>
+is able to fullfil the multiple linear regression when you get a response variable ($\text{y}$) and a set of <br>
+explanatory variables($\text{X}_{1}$). First, you should read the following explanations carefully and, then <br>
+write a code by yourself.
+
+ $\quad$ Suppose you have a response vector of size *n* as 
+
+$$
+  \begin{aligned}
+  \text{y} = (y_{1}, y_{2}, \ldots, y_{n})^T
+  \end{aligned}
+$$
+
+and a matrix consisting of *p* explanatory variables as 
+
+$$ 
+  \begin{aligned}
+    \begin{equation*}
+      \mathbf{X_{1}} = (\text{x}_{1}, \text{x}_{2}, \ldots, \text{x}_{p}) = \left( 
+        \begin{array}{cccc}
+          x_{11} & x_{12} & \ldots & x_{1p} \\
+          x_{21} & x_{22} & \ldots & x_{2p} \\
+          \vdots & \vdots & \ddots \\
+          x_{n1} & x_{n2} & \ldots & x_{np}
+        \end{array} \right)
+    \end{equation*}
+  \end{aligned}
+$$
+
+We would like to build a linear model as 
+
+$$ 
+  \begin{aligned}
+  \ y_{i} & = \beta_{0} + \beta_{1}x_{i1} + \beta_{2}x_{i2} + \ldots + \beta_{p}x_{ip} +\epsilon_{i}  
+  \end{aligned}
+$$
+
+for *i* = 1, 2, ..., *n*. We assume that $\epsilon_{i}$'s are independently and identically distributed from *N*(0, $\sigma^2$).<br>
+To turn this model into a matrix form, we may write it again as a simple form of 
+
+$$
+  \begin{aligned}
+    \text{y} = X\beta + \epsilon
+  \end{aligned}
+$$
+
+where
+
+$$ 
+  \begin{aligned}
+    \begin{equation*}
+      \mathbf{X} = (1, X_{1}) = \left( 
+        \begin{array}{ccccc}
+          1 & x_{11} & x_{12} & \ldots & x_{1p} \\
+          1 & x_{21} & x_{22} & \ldots & x_{2p} \\
+          \vdots & \vdots & \ddots \\
+          1 & x_{n1} & x_{n2} & \ldots & x_{np} 
+        \end{array} \right) 
+    \end{equation*} \quad and \quad \beta & = (\beta_{0}, \beta_{1}, \beta_{2}, \ldots, \beta_{p})^T
+  \end{aligned}
+$$ 
+
+  $\quad$ Using this vector-matrix form, from the theory of linear regression, we know that the least squares or maximum estimate
+of model parameters is given as
+
+$$
+  \begin{aligned}
+    \hat{\beta} & = (X^{T}X)^{-1}X^{T}\text{y}
+  \end{aligned}
+$$
+
+And the corresponding the fitted (or predicted) values are
+
+$$ 
+  \begin{aligned}
+    \hat{\text{y}} = (\hat{y}_{1}, \hat{y}_{2}, \ldots, \hat{y}_{n})^T = X\hat{\beta}
+  \end{aligned}
+$$  
+
+and the residuals are
+
+$$ 
+  \begin{aligned}
+    \text{e} = (e_{1}, e_{2}, \ldots, e_{n})^T = \text{y} - \hat{\text{y}} \quad or \quad e_{i} = y_{i} - \hat{y}_{i}
+  \end{aligned}
+$$
+
+And the unbiased estimate of the variance component is known as 
+
+$$
+  \begin{aligned}
+    \hat{\sigma^{2}} = \frac{\sum_{i=i}^{n} e_{i}^2} {n - p - 1} = \frac{\text{e}^{T}\text{e}} {n - p - 1}
+  \end{aligned}
+$$  
